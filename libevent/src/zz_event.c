@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <inttypes.h>
 
 #include <pthread.h>
 
@@ -209,7 +210,7 @@ int zz_event_create_event_in_queue(
     zz_event_list_t *event)
 {
     pthread_t caller_thread = pthread_self();
-    printf("Adding event to queue <%d> in thread <%lx>.\n", queue_id, caller_thread);
+    printf("Adding event to queue <%d> in thread <%" PRIx64 ">.\n", queue_id, (uint64_t)(caller_thread));
 
     if (event)
     {
@@ -241,7 +242,7 @@ int zz_event_process_events(
         if (curr_event)
         {
             pthread_t caller_thread = pthread_self();
-            printf("Processing events from queue <%d> in thread <%lx>.\n", queue_id, caller_thread);
+            printf("Processing events from queue <%d> in thread <%" PRIx64 ">.\n", queue_id, (uint64_t)caller_thread);
         }
         while (curr_event)
         {

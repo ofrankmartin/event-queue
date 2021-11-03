@@ -56,7 +56,7 @@ void *gui_main_loop(void *data)
     {
         zz_event_process_events(GUI_EVENT_QUEUE, NULL);
         uint64_t elapsed_time = getTicksMs() - start_time;
-        if (elapsed_time >= 500)
+        if (elapsed_time >= 2000)
         {
             for (int i = 0; i < 5; i++)
             {
